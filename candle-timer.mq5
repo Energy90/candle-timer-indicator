@@ -7,10 +7,13 @@
 #property link      "https://mcode.co.za"
 #property version   "1.00"
 #property indicator_chart_window
-#property description "- candle timer, the indicator that shows: "
-#property description "- remaining time of the current candle, "
-#property description "- the opening time of the current candle "
-#property description "- and the closing time of the current candle"
+#property description "This indicator provides the following key time metrics:"
+#property description "- Displays the current local time from your computer."
+#property description "- Displays the current time from your broker's server."
+#property description "- Provides an estimate of the current server time, useful for anticipating updates."
+#property description "- Shows the exact opening time of the active candlestick on your chart's current timeframe."
+#property description "- Displays the projected closing time of the active candlestick on your chart's current timeframe."
+#property description "- Counts down the time left until the current candlestick closes."
 
 // declaring global opening time
 datetime opening_time;
@@ -89,7 +92,8 @@ void OnTimer()
          calculated_server_time=calculated_server_time+1;; 
      } 
 //---
-   string com=StringFormat("                  Start time: %s\r\n",TimeToString(start_time,TIME_MINUTES|TIME_SECONDS)); 
+   string com = "Candle Timer Indicator\r\n";
+   com=com+StringFormat("                  Start time: %s\r\n",TimeToString(start_time,TIME_MINUTES|TIME_SECONDS)); 
    com=com+StringFormat("                  Local time: %s\r\n",TimeToString(local_time,TIME_MINUTES|TIME_SECONDS)); 
    com=com+StringFormat("TimeTradeServer time: %s\r\n",TimeToString(trade_server_time,TIME_MINUTES|TIME_SECONDS)); 
    com=com+StringFormat(" EstimatedServer time: %s\r\n",TimeToString(calculated_server_time,TIME_MINUTES|TIME_SECONDS)); 
